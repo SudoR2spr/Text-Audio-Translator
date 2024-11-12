@@ -11,7 +11,7 @@
 
 1. Clone this repository or download the HTML file.
 ```bash
-git clone https://github.com/SudoR2spr/Text-Audio-Translator.git
+git clone https://github.com/SudoR2spr/Text-To-Audio-Translator.git
 ```
 2. Host HTML file in a github page.
 

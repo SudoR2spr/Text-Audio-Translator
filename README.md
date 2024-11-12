@@ -2,7 +2,7 @@
 
 <img src="https://github.com/SudoR2spr/SudoR2spr/raw/main/assets/line-neon.gif" width="100%">
 
-<img align="center" src="https://i.imgur.com/z0hXNkg.png" width="50%">
+<center <img src="https://i.imgur.com/z0hXNkg.png" width="50%">
 
 <img src="https://github.com/SudoR2spr/SudoR2spr/raw/main/assets/line-neon.gif" width="100%">
 

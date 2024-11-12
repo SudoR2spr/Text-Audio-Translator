@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="author" content="WOODcraft SudoR2spr" />
+    <meta name="keywords" content="WDzone, Translation, Text-Audio-Translator" />
+    <meta name="description" content="WDZONE Website Service Text-Audio-Translator." />
+    <meta property="og:description" content="WDZONE Website Service Text-Audio-Translator.">
+    <meta charset='utf-8' content='text/html' http-equiv='content-type' />
+    <meta content='https://i.imgur.com/z0hXNkg.png' property='og:image' />
+    <link href='https://i.imgur.com/z0hXNkg.png' rel='shortcut icon' type='image/vnd.microsoft.icon' />
+    <link href='https://i.imgur.com/z0hXNkg.png' rel='apple-touch-icon' />	
+	<link rel="icon" href="https://i.imgur.com/z0hXNkg.png" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="Angel-script/angel.css">
+    <title>Translation Page By -WOODcraft</title>
+
+</head>
+<body>
+    <div class="container">
+	    <i class="fa fa-language" style="font-size:60px;color:#0cf0dd; margin-bottom: 0px; "></i>
+        <h2> Text Translator</h2>
+        <textarea id="inputText" rows="4" cols="50" placeholder="এখানে লিখুন"></textarea><br>
+	
+        <label class="woodcraft" for="language">Select Language:</label>
+        <select id="language">
+            <option value="bn">Bengali</option>
+            <option value="ar">Arabic</option>
+            <option value="hi">Hindi</option>
+            <option value="en">English</option>
+            <option value="zh-CN">Chinese</option>
+            <option value="bg">Bulgarian</option>
+            <option value="km">Cambodian</option>
+            <option value="kn">Kannada</option>
+            <option value="ca">Catalan</option>
+            <option value="cs">Czech</option>
+            <option value="da">Danish</option>
+            <option value="sk">Slovak</option>
+            <option value="es">Spanish</option>
+            <option value="et">Estonian</option>
+            <option value="fi">Finnish</option>
+            <option value="id">Indonesian</option>
+            <option value="is">Icelandic</option>
+            <option value="it">Italian</option>
+            <option value="ja">Japanese</option>
+            <option value="no">Norwegian</option>
+            <option value="pl">Polish</option>
+            <option value="pt">Portuguese</option>
+            <option value="ro">Romanian</option>
+            <option value="th">Thai</option>
+            <option value="ta">Tamil</option>
+            <option value="te">Telugu</option>
+            <option value="tr">Turkish</option>
+            <option value="uk">Ukrainian</option>
+            <option value="vi">Vietnamese</option>
+        </select><br>
+
+        <button onclick="translateText()">Translate</button>
+        <button onclick="clearText()">Clear</button>
+        <br>
+        <button onclick="copyToClipboard()">Copy to Clipboard</button>
+
+        <div id="translatedText">Translated text will appear here</div>
+
+        <!-- Audio Player for TTS -->
+        <audio id="audioPlayer" controls>
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+
+    <div class="footer">
+        <p>© 2024 Translate. All rights reserved. <a href="https://t.me/Opleech_WD" target="_blank">❖ 𝐖𝐃 𝐙𝐎𝐍𝐄 ❖ ™</a></p>
+    </div>
+
+    <script>
+        async function translateText() {
+            const language = document.getElementById("language").value;
+            const inputText = document.getElementById("inputText").value;
+            const url = `https://api.nyxs.pw/tools/tts?text=${encodeURIComponent(inputText)}&to=${language}`;
+
+            try {
+                const response = await fetch(url, { method: 'GET' });
+                const result = await response.json();
+
+                console.log("API Response:", result);
+
+                if (result.status && result.result) { // `result.result` ফিল্ড চেক করা
+                    document.getElementById("translatedText").innerText = result.result;
+
+                    // Get the MP3 URL from the result and set it to the audio player
+                    const audioUrl = result.result;
+                    const audioPlayer = document.getElementById("audioPlayer");
+
+                    if (audioUrl) {
+                        audioPlayer.style.display = 'block'; // Show the audio player
+                        audioPlayer.src = audioUrl; // Set the audio URL to the player
+                    } else {
+                        document.getElementById("translatedText").innerText = "No audio URL available.";
+                    }
+                } else if (!result.status && result.message) {
+                    document.getElementById("translatedText").innerText = "Translation failed: " + result.message;
+                } else {
+                    document.getElementById("translatedText").innerText = "Translation failed!";
+                }
+            } catch (error) {
+                console.error("Error:", error);
+                document.getElementById("translatedText").innerText = "An error occurred!";
+            }
+        }
+
+        function clearText() {
+            document.getElementById("inputText").value = "";
+            document.getElementById("translatedText").innerText = "Translated text will appear here";
+            const audioPlayer = document.getElementById("audioPlayer");
+            audioPlayer.style.display = 'none'; // Hide the audio player
+            audioPlayer.src = ""; // Clear the audio source
+        }
+
+        function copyToClipboard() {
+            const translatedText = document.getElementById("translatedText").innerText;
+            navigator.clipboard.writeText(translatedText).then(() => {
+                alert("Text copied to clipboard!");
+            }).catch(err => {
+                console.error("Failed to copy text: ", err);
+            });
+        }
+    </script>
+</body>
+</html>

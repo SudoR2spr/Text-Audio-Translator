@@ -1,0 +1,96 @@
+body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            min-height: 100vh;
+            margin: 20;
+            box-sizing: border-box;
+            background-color: #ebebeb;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+			font-size: 24px;
+			font-weight: bold;
+            border-radius: 10px;
+			margin-bottom: 60px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        select, button {
+            padding: 15px;
+            margin: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            width: 50%;
+            max-width: 300px;
+        }
+
+        select:hover, button:hover {
+            background-color: #e0e0e0;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        button:active {
+            background-color: #0cf0dd;
+        }
+		
+		.woodcraft {
+            color: #1702f5;
+			font-size: 16px;
+        }			
+
+        #translatedText {
+            padding: 15px;
+            margin-top: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            font-size: 16px;
+        }
+
+        audio {
+            margin-top: 20px;
+            display: none;
+            width: 100%;
+			border-radius: 50px;
+			border: 3px solid #ded3e3;
+			box-shadow: 3px 6px #595959;
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            background-color: #f2ebd8;
+            padding: 10px;
+            font-size: 14px;
+			font-weight: bold;
+            color: #005eeb;
+            border-top: 6px solid #b8eff2;
+        }
+
+        .footer a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
